@@ -1,0 +1,247 @@
+.certificates-section {
+    padding: 6rem 2rem;
+    background-color: var(--color-bg-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.nav-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--color-text-main);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.nav-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-bg-dark);
+    transform: scale(1.1);
+}
+
+.left-btn {
+    position: absolute;
+    left: -20px;
+}
+
+.right-btn {
+    position: absolute;
+    right: -20px;
+}
+
+.certificates-carousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.certificates-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.certificate-card {
+    min-width: 250px;
+    flex: 0 0 auto;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-color: var(--color-primary);
+}
+
+.cert-preview-wrapper {
+    width: 100%;
+    height: 160px;
+    position: relative;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.cert-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.certificate-card:hover .cert-thumb {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.pdf-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+}
+
+.pdf-icon {
+    font-size: 3rem;
+}
+
+.pdf-label {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.view-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(217, 56, 30, 0.8);
+    /* Accent color overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.certificate-card:hover .view-overlay {
+    opacity: 1;
+}
+
+.cert-title {
+    padding: 1rem;
+    text-align: center;
+    color: var(--color-text-main);
+    font-size: 1rem;
+    margin: 0;
+    border-top: 1px solid var(--glass-border);
+}
+
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: #1a1a1a;
+    width: 90%;
+    max-width: 1000px;
+    height: 85vh;
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-primary);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--color-text-main);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.close-btn:hover {
+    color: var(--color-accent);
+}
+
+.modal-title {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    flex: 1;
+    width: 100%;
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cert-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+    /* White background usually better for PDFs */
+}
+
+.cert-full-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+
+    .left-btn,
+    .right-btn {
+        display: none;
+        /* Hide buttons on mobile where swipe is natural */
+    }
+
+    .certificates-carousel {
+        padding: 0;
+    }
+
+    .modal-content {
+        width: 95%;
+        height: 90vh;
+        padding: 1rem;
+    }
+}

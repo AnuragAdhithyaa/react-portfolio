@@ -1,0 +1,186 @@
+.microchip-void {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    perspective: 1200px;
+    background-color: #0f172a;
+}
+
+.void-background {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 20%, #1e3a8a 0%, #0f172a 70%);
+    opacity: 0.8;
+}
+
+/* Central glowing core simulated near the bottom for contact hub */
+.glowing-core {
+    position: absolute;
+    bottom: -10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 60%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.glowing-core-pulse {
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    width: 20vw;
+    height: 20vw;
+    margin-left: -10vw;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: corePulse 4s infinite alternate ease-in-out;
+    mix-blend-mode: screen;
+}
+
+@keyframes corePulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+.floating-container {
+    position: absolute;
+    inset: -50% -20%;
+    /* wider to allow drift */
+    transform-style: preserve-3d;
+}
+
+.floating-element {
+    position: absolute;
+    will-change: transform;
+}
+
+/* 3D Silicon / ARM Chips */
+.float-chip {
+    width: 60px;
+    height: 60px;
+    background-color: #020617;
+    border: 2px solid #3b82f6;
+    border-radius: 4px;
+    box-shadow: inset 0 0 15px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+    animation: driftChip linear infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.float-chip::before,
+.float-chip::after {
+    content: '';
+    position: absolute;
+    background: #3b82f6;
+}
+
+/* Simulated pins via pseudo elements */
+.float-chip::before {
+    top: -5px;
+    bottom: -5px;
+    left: 10px;
+    right: 10px;
+    background: repeating-linear-gradient(90deg, transparent, transparent 4px, #3b82f6 4px, #3b82f6 8px);
+    z-index: -1;
+}
+
+.float-chip::after {
+    left: -5px;
+    right: -5px;
+    top: 10px;
+    bottom: 10px;
+    background: repeating-linear-gradient(0deg, transparent, transparent 4px, #3b82f6 4px, #3b82f6 8px);
+    z-index: -1;
+}
+
+.chip-inner {
+    font-family: var(--font-code, monospace);
+    color: #60a5fa;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 0 5px #3b82f6;
+    transform: translateZ(10px);
+}
+
+@keyframes driftChip {
+    0% {
+        transform: translateY(0) rotateX(20deg) rotateY(10deg) translateZ(-200px);
+    }
+
+    100% {
+        transform: translateY(-150vh) rotateX(180deg) rotateY(90deg) translateZ(100px);
+    }
+}
+
+/* PCB Traces */
+.float-trace {
+    width: 200px;
+    height: 100px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 8px;
+    animation: driftTrace linear infinite;
+    background:
+        linear-gradient(90deg, transparent 49%, rgba(59, 130, 246, 0.4) 50%, transparent 51%) 0 0 / 20px 20px,
+        linear-gradient(0deg, transparent 49%, rgba(59, 130, 246, 0.4) 50%, transparent 51%) 0 0 / 20px 20px;
+    clip-path: polygon(0 20%, 20% 0, 100% 0, 100% 80%, 80% 100%, 0 100%);
+}
+
+@keyframes driftTrace {
+    0% {
+        transform: translateY(0) rotateX(60deg) rotateZ(30deg) translateZ(-400px);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotateX(-20deg) rotateZ(-10deg) translateZ(0);
+        opacity: 0;
+    }
+}
+
+/* Real-time Data Packets */
+.data-packet {
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(to bottom, #fff, #3b82f6, transparent);
+    border-radius: 2px;
+    box-shadow: 0 0 10px #3b82f6, 0 0 20px #fff;
+    animation: shootPacket linear infinite;
+}
+
+@keyframes shootPacket {
+    0% {
+        transform: translateY(100vh) translateZ(-100px) scale(1);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) translateZ(200px) scale(0.5);
+        opacity: 0;
+    }
+}

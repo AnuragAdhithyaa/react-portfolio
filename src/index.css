@@ -1,0 +1,61 @@
+/* index.css - Global Styles */
+
+:root {
+  --color-bg-dark: #0f172a;
+  /* Navy Blue */
+  --color-primary: #3b82f6;
+  /* Bright Blue */
+  --color-accent: #60a5fa;
+  /* Light Blue */
+  --color-text-main: #f8fafc;
+  /* Very light slate */
+  --color-text-muted: #94a3b8;
+  /* Muted slate */
+
+  --font-main: 'Inter', sans-serif;
+  --font-code: 'Fira Code', monospace;
+
+  --glass-bg: rgba(30, 58, 138, 0.4);
+  --glass-border: rgba(147, 197, 253, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-main);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e3a8a;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

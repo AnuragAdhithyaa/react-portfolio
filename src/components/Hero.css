@@ -1,0 +1,169 @@
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 30%, #1e3a8a 0%, #0f172a 80%);
+    /* Blue fallback */
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    filter: hue-rotate(210deg) saturate(1.2);
+    /* Turn red lanterns to blue */
+}
+
+/* 50% navy overlay as requested */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.4);
+    /* Lighter blue overlay to reduce darkness */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    width: 100%;
+    padding: 2rem;
+}
+
+.code-container {
+    background: rgba(10, 10, 10, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 12px;
+    /* Rounded corners as requested */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.6);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    /* Important so inner video respects rounded corners */
+}
+
+/* New inner video background */
+.hud-video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #0f172a;
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 70%),
+        linear-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1px, transparent 1px);
+    background-size: 100% 100%, 30px 30px, 30px 30px;
+    animation: panGrid 15s linear infinite;
+}
+
+@keyframes panGrid {
+    0% {
+        background-position: 0 0, 0 0, 0 0;
+    }
+
+    100% {
+        background-position: 0 0, 30px 30px, 30px 30px;
+    }
+}
+
+.hud-video-background iframe {
+    width: 200%;
+    /* Make video larger to hide youtube UI edges if any */
+    height: 200%;
+    margin-top: -50%;
+    /* Center the scaled video */
+    margin-left: -50%;
+    object-fit: cover;
+    opacity: 0.6;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    /* Prevent clicking inside the YouTube video */
+}
+
+.hud-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    /* Semi-transparent overlay for text readability */
+}
+
+pre {
+    position: relative;
+    z-index: 2;
+    /* Place above video */
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: var(--font-code);
+    font-size: 1.1rem;
+    color: #ffffff;
+    /* Requested perfectly readable white text */
+    line-height: 1.6;
+}
+
+.typing-text {
+    font-family: inherit;
+    color: #ffffff;
+    /* Requested white text */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.cursor {
+    position: relative;
+    z-index: 2;
+    /* Place above video */
+    display: inline-block;
+    width: 10px;
+    animation: blink 1s step-end infinite;
+    color: #ffffff;
+    /* Requested white text */
+    margin-left: 5px;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .code-container {
+        padding: 1.5rem;
+    }
+
+    pre {
+        font-size: 0.9rem;
+    }
+}

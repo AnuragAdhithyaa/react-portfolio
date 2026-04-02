@@ -1,0 +1,27 @@
+.placeholder-section {
+    padding: 6rem 2rem;
+    background-color: var(--color-bg-dark);
+    text-align: center;
+}
+
+.placeholder-section.bg-alt {
+    background-color: #080808;
+}
+
+.placeholder-section .section-title {
+    justify-content: center;
+}
+
+.placeholder-content {
+    margin-top: 3rem;
+    padding: 4rem 2rem;
+    border: 1px dashed var(--glass-border);
+    border-radius: 8px;
+    background: rgba(20, 20, 20, 0.3);
+}
+
+.placeholder-content p {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    font-family: var(--font-code);
+}

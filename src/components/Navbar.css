@@ -1,0 +1,73 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar-logo a {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.navbar-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.navbar-links a {
+    color: var(--color-text-main);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    padding: 0.5rem;
+}
+
+.navbar-links a:hover {
+    color: var(--color-primary);
+    text-shadow: 0 0 8px rgba(230, 184, 0, 0.5);
+}
+
+.cv-btn {
+    border: 1px solid var(--color-accent);
+    padding: 0.5rem 1rem !important;
+    border-radius: 4px;
+    color: var(--color-accent) !important;
+    transition: all 0.3s ease !important;
+}
+
+.cv-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg-dark) !important;
+    text-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar-links {
+        gap: 0.8rem;
+    }
+
+    .navbar-links a {
+        font-size: 0.85rem;
+    }
+}
